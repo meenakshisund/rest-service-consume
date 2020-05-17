@@ -22,7 +22,7 @@ class WebServiceControllerTest {
     @MockBean
     WebService webService;
 
-    @DisplayName("actual rest call")
+    @DisplayName("actual rest call - no mock")
     @Test
     void test1() throws URISyntaxException {
         IfscResponse response = new IfscResponse();

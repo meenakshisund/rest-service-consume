@@ -23,18 +23,11 @@ class WebService {
     private String baseUrl;
 
     ResponseEntity getDetailsByIfsc(String isfc) throws URISyntaxException, RestClientException  {
-
-        StringBuilder sb = new StringBuilder(baseUrl).append(isfc);
-
+        URI uri = new URI(baseUrl + isfc);
         try {
-            return customRestTemplate.exchange(
-                    new URI(sb.toString()),
-                    HttpMethod.GET,
-                    null,
-                    IfscResponse.class);
-
-        } catch (HttpClientErrorException ex){
-            return new ResponseEntity<>("IFSC Code " + isfc + " not found", HttpStatus.valueOf(ex.getRawStatusCode()));
+            return customRestTemplate.exchange(uri, HttpMethod.GET, null, IfscResponse.class);
+        } catch (RestClientException ex){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }
