@@ -14,7 +14,7 @@
         </rollingPolicy>
 
         <encoder>
-            <pattern>%d %p %c{1.} [%t] %m %X{requestId}%n</pattern>
+            <pattern>%d %p %c{1.} [%t] %m; X-REQUEST-ID=%X{requestId};%n</pattern>
         </encoder>
     </appender>
 
