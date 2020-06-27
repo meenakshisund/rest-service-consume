@@ -1,11 +1,11 @@
-package com.webservice.call;
+package com.webservice.call.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
-class IfscResponse implements Serializable {
+public class IfscResponse implements Serializable {
 
     @JsonProperty("BRANCH")
     String branchName;
