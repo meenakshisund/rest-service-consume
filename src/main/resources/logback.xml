@@ -14,16 +14,25 @@
         </rollingPolicy>
 
         <encoder>
-            <pattern>%d %p %c{1.} [%t] %m; X-REQUEST-ID=%X{requestId};%n</pattern>
+            <!--<pattern>%d %p %c{1.} [%t] %m; X-REQUEST-ID=%X{requestId};%n</pattern>-->
+            <pattern>%d; level=%p; c=%c{0}; t=[%t]; msg=%m; X-REQUEST-ID=%X{requestId};%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d; level=%p; c=%c{0}; t=[%t]; msg=%m; X-REQUEST-ID=%X{requestId};%n</pattern>
         </encoder>
     </appender>
 
     <logger name="com.webservice.call" level="debug" additivity="false">
         <appender-ref ref="FILE-ROLLING"/>
+        <appender-ref ref="STDOUT"/>
     </logger>
 
     <root level="error">
         <appender-ref ref="FILE-ROLLING"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 
 </configuration>

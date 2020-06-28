@@ -58,4 +58,9 @@ PropertySourcesPlaceHolderConfigurer is used to configure property sources. Crea
     private String baseUrl;
 ```
 
+```
+    docker build -f Dockerfile -t "webservice-img" .
+    docker run -p 8080:8080 webservice-img
+```
+
 

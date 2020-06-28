@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
-public class LogginInterceptor implements HandlerInterceptor {
+public class LoggingInterceptor implements HandlerInterceptor {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(LogginInterceptor.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(LoggingInterceptor.class);
 
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
+                             Object handler) throws Exception {
         createMDC(request, handler);
         LOGGER.info("Incoming Request");
         return true;
     }
 
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
-                                 @Nullable Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
+                                Object handler, @Nullable Exception ex) throws Exception {
         LOGGER.info("Request Completed");
         MDC.clear();
     }
